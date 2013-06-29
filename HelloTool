@@ -1,0 +1,214 @@
+
+/**
+ * you can put a one sentence description of your tool here.
+ *
+ * ##copyright##
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA  02111-1307  USA
+ * 
+ * @author  	##author##
+ * @modified	##date##
+ * @version		##version##
+ */
+
+ package template.tool;
+ 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent; 
+import java.awt.event.ActionListener; 
+import javax.swing.JButton; 
+import javax.swing.JFrame; 
+import javax.swing.JLabel; 
+import javax.swing.JPanel; 
+import javax.swing.JTextField;
+import java.sql.*;
+ 
+import processing.app.*;
+import processing.app.tools.*;
+ 
+ 
+ 
+ public class HelloTool implements Tool {
+ 
+	 
+ // when creating a tool, the name of the main class which implements Tool
+ // must be the same as the value defined for project.name in your build.properties
+	 String ji;
+	 JPanel jp = new JPanel(); 
+	 JLabel jl = new JLabel(); 
+	 JTextField jt = new JTextField(); 
+	 JButton jb = new JButton("Enter");
+	 JTextField Texto = new JTextField("Código");
+	 JFrame Ventana = new JFrame();
+ 
+	 
+	 
+	public String getMenuTitle() {
+		return "Hello Tool";
+	}
+ 
+	
+ 
+	public void run() {
+		
+		Ventana.setSize(500, 500);
+		Ventana.setLocationRelativeTo(null);
+		Ventana.setLayout(new FlowLayout());
+		Ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Ventana.add(Texto);
+		Ventana.add(jb);
+		Ventana.add(Texto);
+		
+	/*
+		
+		//public static void main(String args[]) {
+	        try {
+	            //Cargamos el puente JDBC =&gt; Mysql
+	            System.out.println("Intentando cargar el conector...");
+	            Class.forName("com.mysql.jdbc.Driver");
+
+	            //Intentamos conectarnos a la base de Datos en este caso una base llamada temp
+	            System.out.println("Conectando a la base...");
+	            Connection con = DriverManager.getConnection(
+	            "jdbc:mysql://localhost/TESISPRUEBA", "root", "pass"
+	            );
+	            System.out.println("Conexion a BD establecida");
+	            Statement stmt = con.createStatement();
+	            ResultSet codigo1 = stmt.executeQuery("SELECT idCodigo, Codigo FROM Codigo WHERE IDCODIGO =3");
+	            
+	            while (codigo1.next()) {
+	            		      
+	            	ji = codigo1.getString("CODIGO");
+	            	System.out.println(codigo1.getString("CODIGO"));
+	            		      //System.out.println("Nombre: " + resultado.getString("nombre"));
+	            		      //System.out.println("Clave: " + resultado.getString("clave"));
+	            		  }
+	            
+	            //String codigo2 = codigo2.setText(codigo1.getString("Codigo"));
+	            //System.out.println(codigo1.getString("CODIGO"));          
+	            
+	            } catch(SQLException ex) {
+	            System.out.println("Error de mysql");
+	            } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	            } catch(Exception e) {
+	            System.out.println("Se produjo un error inesperado: "+e.getMessage());
+	        }
+	//    }
+	
+	        //Info Query
+            
+           
+		*/
+		
+		System.out.println("hello Tool. ##name## ##version## by ##author##");
+		
+		
+	}
+ 
+ 
+
+ 
+ public void init(Editor theEditor) 
+	{
+		
+		System.out.println("Probando");
+		
+		//public static void main(String args[]) {
+        try {
+            //Cargamos el puente JDBC =&gt; Mysql
+            System.out.println("Intentando cargar el conector...");
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //Intentamos conectarnos a la base de Datos en este caso una base llamada temp
+            System.out.println("Conectando a la base...");
+            Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost/TESISPRUEBA", "root", "@1RainbowSix"
+            );
+            System.out.println("Conexion a BD establecida");
+            Statement stmt = con.createStatement();
+            ResultSet codigo1 = stmt.executeQuery("SELECT idCodigo, Codigo FROM Codigo WHERE IDCODIGO =1");
+            
+            while (codigo1.next()) {
+            		      
+            	ji = codigo1.getString("CODIGO");
+            	System.out.println(codigo1.getString("CODIGO"));
+            	
+           	
+            		      //System.out.println("Nombre: " + resultado.getString("nombre"));
+            		      //System.out.println("Clave: " + resultado.getString("clave"));
+            		  }
+            
+            //String codigo2 = codigo2.setText(codigo1.getString("Codigo"));
+            //System.out.println(codigo1.getString("CODIGO"));          
+            
+            } catch(SQLException ex) {
+            System.out.println("Error de mysql");
+            } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            } catch(Exception e) {
+            System.out.println("Se produjo un error inesperado: "+e.getMessage());
+        }
+//    }
+
+        //Info Query
+        
+        System.out.println("Probando .....");
+        System.out.println(ji);
+		
+        JTextField Texto1 = new JTextField(ji);
+        Texto1.setBounds(5, 5, 100, 100);
+        Texto1.setPreferredSize(new Dimension(400,400));
+        
+       
+        
+        
+        Ventana.add(Texto1);
+        
+		Texto.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				String input = ji;
+				//String input = Texto.getText(); 
+				Texto.setText(input); 
+			}
+		});
+		
+		Ventana.add(jb);
+		
+		jb.addActionListener(new ActionListener() 
+		{ 
+			public void actionPerformed(ActionEvent e) 
+			{ 
+				String input = Texto.getText(); 
+				jl.setText(ji); 
+			} 
+		});
+		
+		Ventana.add(jl);
+		//Ventana.add(ji);
+		//add(jp);
+		
+		Ventana.setVisible(true);
+		
+	}
+	
+ }
+
+
